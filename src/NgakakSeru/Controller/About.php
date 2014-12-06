@@ -10,6 +10,6 @@ class About
 {
     public function dispatch(Request $request, Application $app)
     {
-        return new Response($app['view']->render('about', ['name' => 'Jonathan']));
+        return new Response($app['view']->render('about', array()));
     }
 }
