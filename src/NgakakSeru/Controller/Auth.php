@@ -57,7 +57,7 @@ class Auth
             $insertUser = new Database\DatabaseCrud();
             $insertUser->insert($app['database'], 'users', $input);
 
-            $newURL = get_site_url()."auth";
+            $newURL = get_site_url()."dashboard/uploadpicture";
             // var_dump($newURL);
             header('Location: '.$newURL);
 
