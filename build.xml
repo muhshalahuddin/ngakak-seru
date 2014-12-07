@@ -4,7 +4,7 @@
     <property name="php" value="php"/>
 
     <target name="build"
-        depends="prepare,lint,phpcs,php-cs-fixer"/>
+        depends="prepare,lint,phpcs,php-cs-fixer,phpunit"/>
 
     <target name="prepare">
         <mkdir dir="${basedir}/build"/>
@@ -19,12 +19,10 @@
                 <modified />
             </fileset>
 
-            <!--
             <fileset dir="${basedir}/tests">
                 <include name="**/*.php" />
                 <modified />
             </fileset>
-            -->
         </apply> 
     </target>
 
@@ -44,9 +42,7 @@
             <arg value="--standard=PSR2" />
             <arg value="--extensions=php" />
             <arg path="${basedir}/src" />
-            <!--
             <arg path="${basedir}/tests" />
-            -->
         </exec>
     </target> 
 
