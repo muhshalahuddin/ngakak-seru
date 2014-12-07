@@ -1,12 +1,14 @@
 {
     "require": {
+        "php": ">=5.4",
         "silex/silex": "~1",
         "league/plates": "~3",
         "symfony/debug": "~2.3",
         "robmorgan/phinx": "*"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "~1"
+        "squizlabs/php_codesniffer": "~1",
+        "phpunit/phpunit": "~4"
     },
     "autoload": {
         "psr-0": {
