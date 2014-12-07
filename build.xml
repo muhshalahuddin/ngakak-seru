@@ -23,6 +23,11 @@
                 <include name="**/*.php" />
                 <modified />
             </fileset>
+            
+            <fileset dir="${basedir}/view">
+                <include name="**/*.php" />
+                <modified />
+            </fileset>
         </apply> 
     </target>
 

@@ -1,5 +1,6 @@
 {
     "require": {
+        "php": ">=5.4",
         "silex/silex": "~1",
         "league/plates": "~3",
         "symfony/debug": "~2.3",
