@@ -31,7 +31,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../../web/index.php">NgakakSeruCom</a>
+                <a class="navbar-brand" href="../../web/index.php/" target="_blank">NgakakSeruCom</a>
             </div>
             <!-- /.navbar-header -->
 
