@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Sastrawi\SentenceDetector" default="build">
+<project name="NgakakSeru" default="build">
     <property name="php" value="php"/>
 
     <target name="build"
-        depends="prepare,phpcs,php-cs-fixer"/>
+        depends="prepare,lint,phpcs,php-cs-fixer"/>
 
     <target name="prepare">
         <mkdir dir="${basedir}/build"/>

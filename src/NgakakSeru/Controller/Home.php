@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
 use NgakakSeru\Database\HomePage;
 
-class Home {
-
+class Home
+{
     public function index(Request $request, Application $app)
     {
         $data['base_url'] = $request->getBasePath();
@@ -23,10 +23,10 @@ class Home {
             'layout' => 'home', // name section of content
         );
 
-        $homePage = new HomePage;
+        $homePage = new HomePage();
         $result = $homePage->loadPost($app['database']);
         $data['data'] = $result;
+
         return new Response($app['view']->render('home', $data));
     }
-
 }
