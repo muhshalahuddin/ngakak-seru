@@ -9,7 +9,6 @@ class Factory
         $app = new \Silex\Application;
 
         $appPath = __DIR__ . '/../../..';
-
         $app['config']   = include $appPath . '/config/config.php';
         $app['view']     = new \League\Plates\Engine($appPath . '/view/scripts', 'phtml');
         $app['database'] = function () use ($appPath) {
