@@ -12,7 +12,9 @@ class Factory
 
         $app['config']   = include $appPath . '/config/config.php';
         $app['view']     = new \League\Plates\Engine($appPath . '/view/scripts', 'phtml');
-        $app['database'] = \NgakakSeru\Database\Connection::getConnection(include $appPath . '/config/database.php');
+        $app['database'] = function () use ($appPath) {
+            return \NgakakSeru\Database\Connection::getConnection(include $appPath . '/config/database.php');
+        };
 
         if (isset($app['config']['debug'])) {
             $app['debug'] = $app['config']['debug'];
