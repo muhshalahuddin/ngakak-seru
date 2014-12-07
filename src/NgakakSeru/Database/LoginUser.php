@@ -13,8 +13,9 @@ class LoginUser
         $query->execute();
         $count = $query->rowCount();
         $row  = $query->fetch();
-        if ($count==1) {
-            $_SESSION['user']=$row;
+        if ($count == 1) {
+            $_SESSION['user'] = $row;
+
             return true;
         } else {
             return false;

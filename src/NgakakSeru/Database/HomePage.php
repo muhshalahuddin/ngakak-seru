@@ -14,6 +14,7 @@ class HomePage
         $query->execute();
         $count = $query->rowCount();
         $row  = $query->fetchAll();
+
         return $row;
     }
 }

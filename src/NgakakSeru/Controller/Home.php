@@ -23,9 +23,10 @@ class Home
             'layout' => 'home', // name section of content
         );
 
-        $homePage = new HomePage;
+        $homePage = new HomePage();
         $result = $homePage->loadPost($app['database']);
         $data['data'] = $result;
+
         return new Response($app['view']->render('home', $data));
     }
 }
