@@ -13,6 +13,7 @@ class Home
     {
         $data['base_url'] = $request->getBasePath();
         $data['config'] = $app['config'];
+        $data['database'] = $app['database'];
         $data['detail'] = array(
             'title' => $app['config']['site']['site_title'],
             'description' => $app['config']['site']['site_description'],

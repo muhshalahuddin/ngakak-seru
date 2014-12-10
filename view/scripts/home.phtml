@@ -37,10 +37,40 @@
                 </div>
                 <?php endforeach; ?>
             </div>
-            
+            <!-- sidebar ads start-->
+            <?php include('siteads.php'); ?>
+            <div class="span4">
+                <div id="sidebar">
+                    <?php if(!empty($Ad1)){ ?>
+                        <div class="ads-one">
+                            <?php echo $Ad1;?>
+                        </div>
+                    <?php }?>
+                    <?php if(!empty($Ad2)){ ?>
+                        <div id="ads-two">
+                            <?php echo $Ad2;?>
+                        </div>
+                    <?php }?>
+                </div>
+            </div>
+            <!-- sidebar ads end-->
             <script language="javascript">
                 function fbshareCurrentPage(id_post)
                 {window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+id_post+"&t=" +document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false; }
+
+                $(document).ready(function() {
+                    var s = $("#ads-two");
+                    var pos = s.position();                   
+                    $(window).scroll(function() {
+                        var windowpos = $(window).scrollTop();
+                       
+                            if (windowpos+55 >= pos.top) {
+                                s.addClass("ads-two");
+                            } else {
+                                s.removeClass("ads-two");
+                            }
+                        });
+                });
             </script>
 
         </div>
