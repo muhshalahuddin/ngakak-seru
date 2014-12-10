@@ -1,7 +1,6 @@
 vendor
 composer.lock
 phinx.yml
-phinx.yml~
 var
 config/*.php
 cache.properties
