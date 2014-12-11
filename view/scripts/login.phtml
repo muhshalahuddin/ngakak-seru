@@ -71,7 +71,9 @@
 			          			</a>
 			          			<div class="nav-collapse collapse">
 			            			<ul class="nav">
-			                  			<li><a href="auth">Login / Register</a></li>
+			                  			<li><a href="loginpage">Masuk</a></li>
+	                                    <li><a href="registerpage">Daftar</a></li>
+	                                    <li class="red-btton" title="upload"><a href="#"><img src="<?= get_site_url(); ?>main/img/upload.png" width="26px" height="auto"/> Upload</a></li>
 			            			</ul>
 			          			</div>
 			        		</div>
@@ -100,7 +102,7 @@
 				<div class="login">
 				<div>
 		        <div class="header" >
-		            <h1>Silahkan Login atau membuat akun GRATIS!</h1>
+		            <h1>Silahkan Login</h1>
 		        </div>
 		            <form action="<?=get_site_url();?>auth/login" method="POST">
 		                <ul>
@@ -114,35 +116,6 @@
 		                </ul>
 		            </form>
 		            </div>
-		            <form class="signup" action="<?=get_site_url();?>auth/register" method="POST">
-		                <ul>
-		                    <h1>Buat Akun Baru:</h1>
-		                    <div class="form-login">
-			                    <li>
-			                        <input type="text"  id="url" placeholder="Username" name="username" required/>
-			                        <img id="url_user" src="<?=get_site_url();?>main/img/user.png" alt="">
-			                    </li> 
-			                    <li>
-			                        <input type="text"  id="url" placeholder="Email" name="email" required/>
-			                        <img id="url_mail" src="<?=get_site_url();?>main/img/mailicon.png" alt="">
-			                    </li> 
-			                    <li>
-			                        <input type="password"  id="url" placeholder="password" name="password" required/>
-			                        <img id="url_password" src="<?=get_site_url();?>main/img/passicon.png" alt="">
-			                    </li> 
-			                    <li>
-			                        <input type="password"  id="url" placeholder="ulangi password"  name="password_confirm" required/>
-			                        <img id="url_password" src="<?=get_site_url();?>main/img/passicon.png" alt="">
-			                    </li> 
-			                </div>
-			                <div class="submit-signup">
-			                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Saya setuju atas <a href="#">syarat</a> dan <a href="#">ketentuan</a></label>
-			                    <input type="submit" value="Create Account">
-			                </div>
-		                </ul>  
-		            </form>
-            
-        
                 </div>
         <!-- end of login -->
 		</div> <!-- end: Container -->

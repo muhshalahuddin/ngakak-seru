@@ -18,17 +18,20 @@ class Factory
         if (isset($app['config']['debug'])) {
             $app['debug'] = $app['config']['debug'];
         }
+        //POST *
+        $app->post('/auth/register', 'NgakakSeru\\Controller\\Auth::register');
+        $app->post('/auth/login', 'NgakakSeru\\Controller\\Auth::login');
+        $app->post('/dashboard/uploadpicturedo', 'NgakakSeru\\Controller\\Dashboard::uploadPictureDo');
 
+        //GET *
         $app->get('/', 'NgakakSeru\\Controller\\Home::index');
         $app->get('/about', 'NgakakSeru\\Controller\\About::dispatch');
         $app->get('/contact', 'NgakakSeru\\Controller\\Contact::dispatch');
-        $app->post('/auth/register', 'NgakakSeru\\Controller\\Auth::register');
-        $app->post('/auth/login', 'NgakakSeru\\Controller\\Auth::login');
         $app->get('/auth/logout', 'NgakakSeru\\Controller\\Auth::logout');
-        $app->get('/auth', 'NgakakSeru\\Controller\\Auth::index');
+        $app->get('/auth/loginpage', 'NgakakSeru\\Controller\\Auth::loginpage');
+        $app->get('/auth/registerpage', 'NgakakSeru\\Controller\\Auth::registerpage');
         $app->get('/dashboard/uploadpicture', 'NgakakSeru\\Controller\\Dashboard::uploadPicture');
         $app->get('/dashboard/history', 'NgakakSeru\\Controller\\Dashboard::history');
-        $app->post('/dashboard/uploadpicturedo', 'NgakakSeru\\Controller\\Dashboard::uploadPictureDo');
 
         return $app;
     }
