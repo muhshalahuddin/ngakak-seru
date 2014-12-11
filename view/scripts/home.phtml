@@ -38,54 +38,11 @@
                 <?php endforeach; ?>
             </div>
             <!-- sidebar ads start-->
-            <div class="span4">
-                <div id="sidebar">
-                        <div class="ads-one">
-                            <script type="text/javascript"><!--
-                            google_ad_client = "ca-pub-9634676781117222";
-                            /* 300x250, created 9/4/10 */
-                            google_ad_slot = "2205194959";
-                            google_ad_width = 300;
-                            google_ad_height = 250;
-                            //-->
-                            </script>
-                            <script type="text/javascript"
-                            src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-                            </script>
-                        </div>
-                        <div id="ads-two">
-                            <script type="text/javascript"><!--
-                            google_ad_client = "ca-pub-9634676781117222";
-                            /* 300x250, created 9/4/10 */
-                            google_ad_slot = "2205194959";
-                            google_ad_width = 300;
-                            google_ad_height = 250;
-                            //-->
-                            </script>
-                            <script type="text/javascript"
-                            src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-                            </script>
-                        </div>
-                </div>
-            </div>
+            <?= include('sidebar.phtml');?>
             <!-- sidebar ads end-->
             <script language="javascript">
                 function fbshareCurrentPage(id_post)
                 {window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+id_post+"&t=" +document.title, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false; }
-
-                $(document).ready(function() {
-                    var s = $("#ads-two");
-                    var pos = s.position();                   
-                    $(window).scroll(function() {
-                        var windowpos = $(window).scrollTop();
-                       
-                            if (windowpos+55 >= pos.top) {
-                                s.addClass("ads-two");
-                            } else {
-                                s.removeClass("ads-two");
-                            }
-                        });
-                });
             </script>
 
         </div>
