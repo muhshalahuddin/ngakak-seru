@@ -11,17 +11,19 @@ class Auth
 {
     private $errorMessage = '';
 
-    public function index(Request $request, Application $app)
+    public function registerpage(Request $request, Application $app)
     {
-        // Render a template
         $data['base_url'] = $request->getBasePath();
-        // if (isset($_SESSION['user'])) {
-          //   // return new Response($app['view']->render('auth',$data));
-          // }else{
-          //   return new Response($app['view']->render('auth',$data));
-          // }
-        return new Response($app['view']->render('auth', $data));
+        return new Response($app['view']->render('register', $data));
     }
+
+    public function loginpage(Request $request, Application $app)
+    {
+        $data['base_url'] = $request->getBasePath();
+
+        return new Response($app['view']->render('login', $data));
+    }
+
 
     public function register(Request $request, Application $app)
     {
@@ -57,12 +59,10 @@ class Auth
             $insertUser = new Database\DatabaseCrud();
             $insertUser->insert($app['database'], 'users', $input);
 
-            $newURL = get_site_url()."dashboard/uploadpicture";
-            // var_dump($newURL);
+            $newURL = get_site_url()."auth/loginpage";
             header('Location: '.$newURL);
 
             return new Response($app['view']->render('auth', $data));
-            // $app['helper']->redirect(base_url().'dashboard');
         }
     }
 
@@ -77,9 +77,8 @@ class Auth
         if ($cek_user) {
             $newURL = get_site_url()."dashboard/uploadpicture";
         } else {
-            $newURL = get_site_url()."auth";
+            $newURL = get_site_url()."auth/loginpage";
         }
-        // var_dump($newURL);
         header('Location: '.$newURL);
 
         return new Response($app['view']->render('auth', $data));
@@ -88,12 +87,10 @@ class Auth
     public function logout(Request $request, Application $app)
     {
         if (isset($_SESSION['user'])) {
-            // Destroy the session
             session_destroy();
         }
 
         $newURL = get_site_url()."auth";
-        // var_dump($newURL);
         header('Location: '.$newURL);
 
         return new Response($app['view']->render('auth', $data));
