@@ -16,7 +16,21 @@ class AuthAdapter extends AbstractAdapter
 
     public function authenticate()
     {
-        $result = new Result(Result::SUCCESS, 'andy');
+        $statement = $this->pdo->prepare('SELECT password FROM users WHERE username = :username');
+        $statement->bindValue('username', $this->getIdentity());
+        $statement->execute();
+
+        $row = $statement->fetch();
+
+        if ($row === false) {
+            $result = new Result(Result::FAILURE_IDENTITY_NOT_FOUND, $this->getIdentity());
+        } elseif ($row['password'] !== md5($this->getCredential())) {
+            $result = new Result(Result::FAILURE_CREDENTIAL_INVALID, $this->getIdentity());
+        } elseif ($row['password'] === md5($this->getCredential())) {
+            $result = new Result(Result::SUCCESS, $this->getIdentity());
+        } else {
+            $result = new Result(Result::FAILURE, $this->getIdentity());
+        }
 
         return $result;
     }

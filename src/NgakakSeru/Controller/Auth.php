@@ -71,8 +71,13 @@ class Auth
         $username = $request->get('username');
         $password = $request->get('password');
 
-        $auth   = $app['auth'];
-        $result = $auth->authenticate($app['auth_adapter']);
+        $auth        = $app['auth'];
+        $authAdapter = $app['auth_adapter'];
+
+        $authAdapter->setIdentity($username);
+        $authAdapter->setCredential($password);
+
+        $result = $auth->authenticate($authAdapter);
 
         if ($result->isValid()) {
             $newURL = get_site_url()."dashboard/uploadpicture";
