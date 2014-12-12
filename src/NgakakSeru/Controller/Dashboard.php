@@ -13,11 +13,12 @@ class Dashboard
 
     public function uploadPicture(Request $request, Application $app)
     {
-        if (!isset($_SESSION['user']['user_id'])) {
-            $newURL = get_site_url()."auth";
+        if (!$app['auth']->hasIdentity()) {
+            $newURL = get_site_url()."auth/login";
             header('Location: '.$newURL);
             exit();
         }
+
         // Render a template
         //$data['error'] = $this->errorMessage;
         $data['base_url'] = $request->getBasePath();

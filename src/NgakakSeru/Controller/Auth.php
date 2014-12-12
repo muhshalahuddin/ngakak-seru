@@ -14,16 +14,9 @@ class Auth
     public function registerpage(Request $request, Application $app)
     {
         $data['base_url'] = $request->getBasePath();
+
         return new Response($app['view']->render('register', $data));
     }
-
-    public function loginpage(Request $request, Application $app)
-    {
-        $data['base_url'] = $request->getBasePath();
-
-        return new Response($app['view']->render('login', $data));
-    }
-
 
     public function register(Request $request, Application $app)
     {
@@ -66,33 +59,34 @@ class Auth
         }
     }
 
-    public function login(Request $request, Application $app)
+    public function showLoginForm(Request $request, Application $app)
+    {
+        $data = array();
+
+        return new Response($app['view']->render('login', $data));
+    }
+
+    public function handleLoginSubmit(Request $request, Application $app)
     {
         $username = $request->get('username');
         $password = $request->get('password');
 
-        $LoginUser = new Database\LoginUser();
-        $cek_user = $LoginUser->login($app['database'], $username, $password);
+        $auth   = $app['auth'];
+        $result = $auth->authenticate($app['auth_adapter']);
 
-        if ($cek_user) {
+        if ($result->isValid()) {
             $newURL = get_site_url()."dashboard/uploadpicture";
         } else {
-            $newURL = get_site_url()."auth/loginpage";
+            $newURL = get_site_url()."auth/login";
         }
-        header('Location: '.$newURL);
 
-        return new Response($app['view']->render('auth', $data));
+        return new Response('', 302, array('Location' => $newURL));
     }
 
     public function logout(Request $request, Application $app)
     {
-        if (isset($_SESSION['user'])) {
-            session_destroy();
-        }
+        $app['auth']->clearIdentity();
 
-        $newURL = get_site_url()."auth";
-        header('Location: '.$newURL);
-
-        return new Response($app['view']->render('auth', $data));
+        return new Response('', 302, array('Location' => $app['config']['url']['site_url']));
     }
 }

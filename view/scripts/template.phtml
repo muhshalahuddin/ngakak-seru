@@ -64,7 +64,11 @@
                                     </a>
                                     <div class="nav-collapse collapse">
                                         <ul class="nav">
-                                            <li><a href="auth/loginpage">Masuk</a></li>
+                                            <?php if ($app['auth']->hasIdentity()): ?>
+                                            <li><a href="auth/logout">Keluar (<?= $this->e($app['auth']->getIdentity()) ?>)</a></li>
+                                            <?php else: ?>
+                                            <li><a href="auth/login">Masuk</a></li>
+                                            <?php endif; ?>
                                             <li><a href="auth/registerpage">Daftar</a></li>
                                             <li class="red-btton" title="upload"><a href="#"><img src="<?= $baseUrl; ?>/img/upload.png" width="26px" height="auto"/> Upload</a></li>
                                         </ul>

@@ -27,6 +27,7 @@ class Home
         $homePage = new HomePage();
         $result = $homePage->loadPost($app['database']);
         $data['data'] = $result;
+        $data['auth'] = $app['auth'];
 
         return new Response($app['view']->render('home', $data));
     }
