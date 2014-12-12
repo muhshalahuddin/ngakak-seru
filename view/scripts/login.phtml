@@ -104,10 +104,18 @@
 		        <div class="header" >
 		            <h1>Silahkan Login :</h1>
 		        </div>
+                <?php if (!empty($message)): ?>
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        <?= $this->e($message) ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
 		            <form action="<?=get_site_url();?>auth/login" method="POST">
 		                <ul>
 		                    <div class="form-login">
-		                        <li><input type="text"  placeholder="Username" name="username" id="url" required/><img id="url_user" 
+		                        <li><input type="text" value="<?= (!empty($username))?$username:'' ?>" placeholder="Username" name="username" id="url" required/><img id="url_user" 
 		                        src="<?=get_site_url();?>main/img/user.png" alt=""></li>
 		                        <li> <input type="password"  placeholder="Password" name="password" id="url" required/><img id="url_password" src="<?=get_site_url();?>main/img/passicon.png" alt=""></li>
 		                        <h5><a href="#" class="forgot-password">I forgot my Password!</a></h5>

@@ -81,11 +81,11 @@ class Auth
 
         if ($result->isValid()) {
             $newURL = get_site_url()."dashboard/uploadpicture";
+            return new Response('', 302, array('Location' => $newURL));
         } else {
-            $newURL = get_site_url()."auth/login";
+            $data = array('message' => 'Username atau password tidak valid.', 'username' => $username);
+            return new Response($app['view']->render('login', $data));
         }
-
-        return new Response('', 302, array('Location' => $newURL));
     }
 
     public function logout(Request $request, Application $app)
