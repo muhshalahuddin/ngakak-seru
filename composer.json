@@ -7,7 +7,10 @@
         "robmorgan/phinx": "*",
         "zendframework/zend-authentication": "~2.3",
         "zendframework/zend-session": "~2.3",
-        "zendframework/zend-eventmanager": "~2.3"
+        "zendframework/zend-eventmanager": "~2.3",
+        "zendframework/zend-inputfilter": "~2.3",
+        "zendframework/zend-servicemanager": "~2.3",
+        "zendframework/zend-i18n": "~2.3"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "~1",

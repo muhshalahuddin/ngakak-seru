@@ -100,24 +100,39 @@
 			<!-- start login -->
 			<div class="row">
 				<div class="login">
-		            <form class="signup" action="<?=get_site_url();?>auth/register" method="POST">
+		            <form class="signup" action="" method="POST">
 		                <ul>
 		                    <h1>Buat Akun Baru :</h1>
+
+                            <?php if (!empty($messages)): ?>
+                            <div class="alert alert-danger">
+                                <?php 
+                                $errorMessage = '';
+                                foreach ($messages as $field => $messageArr) {
+                                    foreach ($messageArr as $message) {
+                                        $errorMessage .= $field . ' ' . $message . '<br />';
+                                    }
+                                }
+
+                                echo $errorMessage;
+                                ?>
+                            </div>
+                            <?php endif; ?>
 		                    <div class="form-login">
 			                    <li>
-			                        <input type="text"  id="url" placeholder="Username" name="username" required/>
+			                        <input type="text" value="<?php echo $this->e(isset($registerForm['username']) ? $registerForm['username'] : '') ?>" id="url" placeholder="Username" name="username" />
 			                        <img id="url_user" src="<?=get_site_url();?>main/img/user.png" alt="">
 			                    </li> 
 			                    <li>
-			                        <input type="text"  id="url" placeholder="Email" name="email" required/>
+			                        <input type="text" value="<?= $this->e(isset($registerForm['email']) ? $registerForm['email'] : '') ?>" id="url" placeholder="Email" name="email" />
 			                        <img id="url_mail" src="<?=get_site_url();?>main/img/mailicon.png" alt="">
 			                    </li> 
 			                    <li>
-			                        <input type="password"  id="url" placeholder="password" name="password" required/>
+			                        <input type="password"  id="url" placeholder="password" name="password" />
 			                        <img id="url_password" src="<?=get_site_url();?>main/img/passicon.png" alt="">
 			                    </li> 
 			                    <li>
-			                        <input type="password"  id="url" placeholder="ulangi password"  name="password_confirm" required/>
+			                        <input type="password"  id="url" placeholder="ulangi password"  name="password_confirm" />
 			                        <img id="url_password" src="<?=get_site_url();?>main/img/passicon.png" alt="">
 			                    </li> 
 			                </div>

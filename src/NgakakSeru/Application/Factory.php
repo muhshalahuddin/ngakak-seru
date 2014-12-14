@@ -47,7 +47,7 @@ class Factory
         $app->get('/contact', 'NgakakSeru\\Controller\\Contact::dispatch');
         $app->get('/auth/logout', 'NgakakSeru\\Controller\\Auth::logout');
         $app->get('/auth/loginpage', 'NgakakSeru\\Controller\\Auth::loginpage');
-        $app->get('/auth/registerpage', 'NgakakSeru\\Controller\\Auth::registerpage');
+        $app->get('/auth/register', 'NgakakSeru\\Controller\\Auth::registerpage');
         $app->get('/dashboard/uploadpicture', 'NgakakSeru\\Controller\\Dashboard::uploadPicture');
         $app->get('/dashboard/history', 'NgakakSeru\\Controller\\Dashboard::history');
 
