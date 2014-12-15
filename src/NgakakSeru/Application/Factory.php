@@ -34,6 +34,12 @@ class Factory
             return $authAdapter;
         };
 
+        $app['service.registration'] = function () use ($app) {
+            $service = new \NgakakSeru\Registration\RegistrationService($app['database']);
+
+            return $service;
+        };
+
         if (isset($app['config']['debug'])) {
             $app['debug'] = $app['config']['debug'];
         }

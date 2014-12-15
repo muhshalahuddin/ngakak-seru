@@ -5,7 +5,6 @@ namespace NgakakSeru\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Silex\Application;
-use NgakakSeru\Database as Database;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\Input;
 use Zend\Validator;
@@ -31,60 +30,18 @@ class Auth
 
         $messages = array();
         if ($inputFilter->isValid()) {
-            var_dump('valid');
-            return new Response($app['view']->render('register', $data));
+            $app['service.registration']->register($inputFilter->getValues());
+
+            $newURL = get_site_url()."auth/login";
+
+            return new Response('', 302, array('location' => $newURL));
         } else {
             $messages = $inputFilter->getMessages();
             $data['messages'] = $messages;
             $data['registerForm'] = $request->request->all();
-            
-            return new Response($app['view']->render('register', $data));
         }
 
-        /*
-        $username = $request->get('username');
-
-        if (empty($username)) {
-            $this->errorMessage .= 'Username harus diisi<br>';
-        }
-
-        $email = $request->get('email');
-
-        if (empty($email)) {
-            $this->errorMessage .= 'Email harus diisi<br>';
-        }
-        $password = $request->get('password');
-
-        if (empty($password)) {
-            $this->errorMessage .= 'Password Harus diisi<br>';
-        }
-
-        $password_confirm = $request->get('password_confirm');
-
-        if ($password != $password_confirm) {
-            $this->errorMessage .= 'Pasword konfirmasi harus sama';
-        }
-        */
-
-        /*
-        if (empty($messages)) {
-            $input = array(
-                'username' => $username,
-                'email' => $email,
-                'password' => md5($password),
-            );
-            $insertUser = new Database\DatabaseCrud();
-            $insertUser->insert($app['database'], 'users', $input);
-
-            $newURL = get_site_url()."auth/loginpage";
-            header('Location: '.$newURL);
-
-            return new Response($app['view']->render('auth', $data));
-        }
-        $data['messages'] = $messages;
-        
-        return new Response($app['view']->render('auth', $data));
-        */
+        return new Response($app['view']->render('register', $data));
     }
 
     public function getRegisterInputFilter()
@@ -94,7 +51,7 @@ class Auth
         $emailValidator->setMessage('Email harus valid');
         $emailValidator->useMxCheck(true);
         $email->getValidatorChain()->attach($emailValidator);
-        
+
         $username = new Input('username');
         $username->getValidatorChain()
             ->attach(new Validator\NotEmpty(), true)
@@ -135,9 +92,11 @@ class Auth
 
         if ($result->isValid()) {
             $newURL = get_site_url()."dashboard/uploadpicture";
+
             return new Response('', 302, array('Location' => $newURL));
         } else {
             $data = array('message' => 'Username atau password tidak valid.', 'username' => $username);
+
             return new Response($app['view']->render('login', $data));
         }
     }
