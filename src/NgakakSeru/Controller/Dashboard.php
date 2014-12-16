@@ -41,7 +41,7 @@ class Dashboard
             $judul = $request->get('judul');
 
             $input = array(
-                'user_id' => $_SESSION['user']['user_id'],
+                'user_id' => $app['auth']->getIdentity(),
                 'judul' => $judul,
                 'image' => $nama_file,
             );
