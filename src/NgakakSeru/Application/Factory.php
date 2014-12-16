@@ -7,6 +7,7 @@ class Factory
     public function createApplication()
     {
         $app = new \Silex\Application();
+        $app->register(new \Silex\Provider\UrlGeneratorServiceProvider());
 
         $appPath = __DIR__.'/../../..';
         $app['config']   = include $appPath.'/config/config.php';
@@ -60,7 +61,8 @@ class Factory
         $app->post('/auth/login', 'NgakakSeru\\Controller\\Auth::handleLoginSubmit');
         $app->get('/auth/login', 'NgakakSeru\\Controller\\Auth::showLoginForm');
 
-        $app->get('/p/{id}-{slug}.html', 'NgakakSeru\\Controller\\Post::showSinglePost')->assert('id', '\d+');
+        $app->get('/p/{id}-{slug}.html', 'NgakakSeru\\Controller\\Post::showSinglePost')->assert('id', '\d+')
+            ->bind('post-single');
 
         return $app;
     }

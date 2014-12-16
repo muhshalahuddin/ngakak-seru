@@ -12,6 +12,6 @@ class Post
     {
         $slug = $request->get('slug');
         $id   = $request->get('id');
-        return new Response($slug . ' ' . $id);
+        return new Response($app['url_generator']->generate('post-single', array('id' => $id, 'slug' => $slug)));
     }
 }
