@@ -45,18 +45,8 @@
 {
     background-color: #63911F;
 }
-
-header{
-	position: fixed;
-	width: 100%;
-	z-index: 100;
-	top:0px;
-}
-
-
-
 body{
-	margin-top: 90px
+	margin-top: 56px
 }
 
 .span4{
@@ -239,14 +229,59 @@ input[type=submit]:active {
 }
 /* End of CSS Login Page*/
 /* Start Header CSS */
-
-#user-menu> ul> li.red-btton> a {
-  background: #fd2000;
-  color: #FFF;
-  font-weight: bold;
-  cursor: pointer; 
+header{
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top:0px;
+}
+#botom-header{
+  border-bottom: 1px solid #CDCDCD;
+  margin-bottom: 20px;
+  height: 45px;
+}
+.header-bottom-left {
+  overflow: hidden;
+  width: 100%;
+  float: left;
+}
+#social-love{
+  float: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.goole-plus-button{
+  padding: 0px;
+  margin-top: 13px;
+  margin: 13px 10px 0px 0px;
+  overflow: hidden;
+  float: left;  
+}
+.facebook-button{
+  padding: 0px;
+  margin-top: 13px;
+  margin: 13px 10px 0px 0px;
+  overflow: hidden;
+  float: left;
+}
+.twitter-button{
+  padding: 0px;
+  overflow: hidden;
+  margin-top: 13px;
+  margin: 13px 10px 0px 30px;
+  overflow: hidden;
+  float: left;
+}
+.webite-name-bottom-header{
+  float: left;
+  padding: 0px;
+  overflow: hidden;
+  margin-top: 13px;
 }
 /* End of Header CSS */
+
+
 /* Start Sidebar Ads CSS */
 .ads-one {
   float: right;
